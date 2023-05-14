@@ -1,28 +1,17 @@
-'use client'
-
-import { MarvelCharacter, MarvelCharacterDataContainer } from '@/types/marveTypes'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { MarvelCharacterDataContainer } from '@/types/marveTypes'
 import Character from './Character'
+import { BASE_URL } from '@/utils/utils'
 
-export default function Characters() {
-  const [characters , setCharacters] = useState<MarvelCharacter[]>([])
-  const fetchData = async () => {
-    const res = await fetch('/api/characters')
-    const  data  = await res.json()
-    const responseCharacter:MarvelCharacterDataContainer = data.data
-    setCharacters(responseCharacter.results || [])
-  }
-  useEffect(() => {
-    if (!characters) fetchData()
-  }, [characters])
-  if (!characters) {
-    return (
-      <>
-        <h1>Loading...</h1>
-      </>
-    )
-  }
+const getCharacters = async () => {
+  const res = await fetch(`${BASE_URL}/api/characters`)
+  const  data  = await res.json()
+  const responseCharacter:MarvelCharacterDataContainer = data.data
+  return responseCharacter
+}
+
+export default async function Characters() {
+ 
+  const characters = (await getCharacters()).results
 
   return (
     <div>
@@ -35,3 +24,4 @@ export default function Characters() {
     </div>
   )
 }
+
