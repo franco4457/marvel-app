@@ -1,7 +1,7 @@
 import { NextApiRequest } from "next"
 import { NextResponse } from "next/server"
 
-export function middleware(request: NextApiRequest): NextResponse {
+export function middleware(request: NextApiRequest): Promise<NextResponse> {
   // const origin = request.headers?.get('origin')
   // console.log(origin)
   const response = NextResponse.next()
@@ -12,7 +12,7 @@ export function middleware(request: NextApiRequest): NextResponse {
   console.log('Middleware!')
   console.log(request.method)
   console.log(request.url)
-  return response
+  return Promise.resolve(response)
 }
 
 export const config = {

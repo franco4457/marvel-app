@@ -1,4 +1,3 @@
-// 
 // import { middleware } from './middleware'
 // import { createServer } from 'http'
 // import { parse } from 'url'
@@ -13,7 +12,7 @@
 //     const parsedUrl = parse(req.url || '', true)
 //     middleware(req).handleRequest(req, res)
 //     handler(req, res, parsedUrl)
-//   }).listen(3000, (err: Error): any => {
+//   }).listen(3000, (err: Error): Void => {
 //     if (err) throw err
 //     console.log('> Ready on http://localhost:3000')
 //   })
