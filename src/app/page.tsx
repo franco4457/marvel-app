@@ -1,3 +1,5 @@
+'use client'
+
 import Characters from '@/app/components/Characters'
 
 export default function Home() {
