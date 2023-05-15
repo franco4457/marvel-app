@@ -5,17 +5,18 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Marvel App',
-  description: 'Marvel application',
+  description: 'Marvel application'
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}</body>
     </html>
   )
 }

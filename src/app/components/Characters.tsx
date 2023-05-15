@@ -1,23 +1,9 @@
-import { MarvelCharacterDataContainer } from '@/types/marveTypes'
+import { getCharacters } from '@/utils/utils'
 import Character from './Character'
-import { BASE_URL } from '@/utils/utils'
+import { getCharParameters } from '@/types/generalTypes'
 
-interface getCharParameters {
-  page?: string
-  query?: string
-}
-
-export const getCharacters = async ({ page, query }: getCharParameters = {}) => {
-  const offset = `offset=${page ? Number(page) * 20 : 0}`
-  const setQuery = page || query ? `/${offset}${query ? `&${query}` : ''} ` : ''
-  const res = await fetch(`${BASE_URL}/api/characters${setQuery}`)
-  const data = await res.json()
-  const responseCharacter: MarvelCharacterDataContainer = data.data
-  return responseCharacter
-}
-
-export default async function Characters({page, query}: getCharParameters = {}) {
-  const characters = (await getCharacters({page, query})).results
+export default async function Characters ({ page, query }: getCharParameters = {}) {
+  const characters = (await getCharacters({ page, query })).results
 
   return (
     <>
