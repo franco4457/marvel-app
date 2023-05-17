@@ -10,9 +10,10 @@ export default function SearchInput() {
     setInput(value)
   }
   return (
-    <div>
+    <div className='flex gap-4'>
       <label htmlFor="search">
         Search character
+        </label>
         <input
           type="text"
           value={input}
@@ -21,7 +22,7 @@ export default function SearchInput() {
           className="text-slate-900"
           onChange={handlerInputChange}
         />
-      </label>
+      <button>Search</button>
     </div>
   )
 }

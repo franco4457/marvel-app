@@ -1,6 +1,6 @@
 import { getCharacters } from '@/utils/utils'
-import Character from './Character'
 import { getCharParameters } from '@/types/generalTypes'
+import Character from '@/app/components/Character'
 
 export default async function Characters ({ page, query }: getCharParameters = {}) {
   const characters = (await getCharacters({ page, query }))?.results || []
