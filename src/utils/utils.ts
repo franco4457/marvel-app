@@ -4,7 +4,7 @@ import { MarvelCharacterDataContainer } from '@/types/marveTypes'
 export const BASE_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://marvel-app-franco4457.vercel.app/'
+    : 'https://marvel-app-franco4457.vercel.app'
 
 export const getCharacters = async ({
   page,
