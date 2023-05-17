@@ -11,12 +11,11 @@ export const getCharacters = async ({
   query
 }: getCharParameters = {}) => {
   // Set pagination parameters
-  const offset = `offset=${page ? Number(page) * 20 : 0}`
-
+  const setPage = page ? `/${page}` : ''
   // Set filter parameters and pagination parameters for search
-  const setQuery = page || query ? `/${offset}${query ? `&${query}` : ''} ` : ''
+  const querySeted = query ? `?${query}` : ''
 
-  const res = await fetch(`${BASE_URL}/api/characters${setQuery}`)
+  const res = await fetch(`${BASE_URL}/api/characters${setPage}${querySeted}`)
 
   const data = await res.json()
   const responseCharacter: MarvelCharacterDataContainer = data.data

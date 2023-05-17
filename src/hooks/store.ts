@@ -6,7 +6,7 @@ import type { TypedUseSelectorHook } from 'react-redux'
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-function useTypedSelector<T>(selector: (state: RootState) => T): T {
+function useTypedSelector<T> (selector: (state: RootState) => T): T {
   return useSelector(selector)
 }
 

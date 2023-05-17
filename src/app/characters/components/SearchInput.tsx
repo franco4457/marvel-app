@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useState } from 'react'
 
-export default function SearchInput() {
+export default function SearchInput () {
   const [input, setInput] = useState('')
 
   const handlerInputChange = (event: ChangeEvent<HTMLInputElement>) => {
