@@ -5,7 +5,7 @@ interface CharacterProps {
   character: MarvelCharacter
 }
 
-export default function Character({ character }: CharacterProps) {
+export default function Character ({ character }: CharacterProps) {
   const img = `${character?.thumbnail?.path}.${character?.thumbnail?.extension}`
   return (
     <div className='snap-center flex flex-col w-[50vw] h-30'>
