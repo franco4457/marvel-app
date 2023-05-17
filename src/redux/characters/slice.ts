@@ -17,10 +17,11 @@ export const charactersSlice = createSlice({
     setFilters: (state, action:PayloadAction<Filters>) => {
       const { payload } = action
       return { ...state, filters: payload }
-    }
+    },
+    clearFilters: (state) => ({ ...state, filters: '' })
   }
 })
 
 export default charactersSlice.reducer
 
-export const { setFilters } = charactersSlice.actions
+export const { setFilters, clearFilters } = charactersSlice.actions

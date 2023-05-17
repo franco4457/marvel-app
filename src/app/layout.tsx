@@ -9,7 +9,7 @@ export const metadata = {
   description: 'Marvel application'
 }
 
-export default function RootLayout({
+export default function RootLayout ({
   children
 }: {
   children: React.ReactNode
