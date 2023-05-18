@@ -1,8 +1,16 @@
-import Characters from '@/app/components/Characters'
+import Characters from '@/app/characters/components/Characters'
 import SearchInput from './components/SearchInput'
 import Paginate from './components/Paginate'
+import { propSearchParams } from './[numPage]/page'
 
-export default function Page () {
+type props ={
+  searchParams: propSearchParams
+}
+
+export default function Page ({ searchParams }:props) {
+  const name = searchParams?.name
+  const query = name ? `name=${name}` : ''
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl flex-col items-center justify-between font-mono text-sm flex text-center gap-6">
@@ -10,7 +18,7 @@ export default function Page () {
         <SearchInput />
         <Paginate to="/characters" />
         {/* @ts-expect-error Async Server Component */}
-        <Characters />
+        <Characters query={query} />
       </div>
     </main>
   )

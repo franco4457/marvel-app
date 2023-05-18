@@ -3,7 +3,9 @@ import Character from './Character'
 import { getCharParameters } from '@/types/generalTypes'
 
 export default async function Characters ({ page, query }: getCharParameters = {}) {
-  const characters = (await getCharacters({ page, query }))?.results || []
+  const { results } = await getCharacters({ page, query })
+
+  const characters = results || []
 
   return (
     <>

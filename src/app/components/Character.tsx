@@ -2,7 +2,7 @@ import { MarvelCharacter } from '@/types/marveTypes'
 import Image from 'next/image'
 
 interface CharacterProps {
-  character: MarvelCharacter
+  character: MarvelCharacter,
 }
 
 export default function Character ({ character }: CharacterProps) {

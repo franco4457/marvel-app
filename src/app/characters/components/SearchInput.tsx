@@ -2,6 +2,7 @@
 
 import { useAppDispatch } from '@/hooks/store'
 import { setFilters } from '@/redux/characters/slice'
+import Link from 'next/link'
 import { ChangeEvent, useState } from 'react'
 
 export default function SearchInput () {
@@ -16,19 +17,19 @@ export default function SearchInput () {
     dispatch(setFilters(filter))
   }
   return (
-    <div className='flex gap-4'>
-      <label htmlFor="searchByName">
-        Search character by name
-        </label>
-        <input
-          type="text"
-          value={searchByName}
-          name="searchByName"
-          placeholder="Iron-man"
-          className="text-slate-900"
-          onChange={handlerInputChange}
-        />
-      <button onClick={handleSearchSumbit} >Search</button>
+    <div className="flex gap-4">
+      <label htmlFor="searchByName">Search character by name</label>
+      <input
+        type="text"
+        value={searchByName}
+        name="searchByName"
+        placeholder="Iron-man"
+        className="text-slate-900"
+        onChange={handlerInputChange}
+      />
+      <Link href={`/characters?name=${searchByName}`}>
+        <button onClick={handleSearchSumbit}>Search</button>
+      </Link>
     </div>
   )
 }

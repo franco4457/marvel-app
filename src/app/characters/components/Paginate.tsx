@@ -2,11 +2,26 @@
 
 import { useCharactersSelector } from '@/hooks/store'
 import Link from 'next/link'
-import React from 'react'
+import { useEffect, useState } from 'react'
 
-const PAGS: Array<number> = [1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10]
+const PAGS: Array<number> = []
+
 export default function Paginate ({ to }: { to: string }) {
   const { filters } = useCharactersSelector()
+  const [pages, setPages] = useState<number>()
+
+  useEffect(() => {
+    if (pages == null) {
+      const $pages = document.querySelector('#characters_pages')?.innerHTML
+      const pgs = Number($pages) || 0
+      setPages(pgs)
+    } else {
+      for (let i = 1; i < pages && i < 11; i++) {
+        PAGS.push(i)
+      }
+    }
+  }, [pages])
+
   const query = filters ? `?${filters}` : ''
   return (
     <>
