@@ -11,4 +11,5 @@ function useTypedSelector<T> (selector: (state: RootState) => T): T {
 }
 
 // Select only characters slice
-export const useCharactersSelector = () => useTypedSelector((state:RootState) => state.characters)
+export const useCharactersSelector = () =>
+  useTypedSelector((state: RootState) => state.characters)

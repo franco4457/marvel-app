@@ -1,6 +1,5 @@
 'use client'
 
-import { useCharactersSelector } from '@/hooks/store'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -11,12 +10,10 @@ interface props {
 const PAGS: Array<number> = []
 
 export default function Paginate ({ to, query }:props) {
-  const { filters } = useCharactersSelector()
-
   const [pages, setPages] = useState(PAGS)
 
   useEffect(() => {
-    // recupero la cantidad de paginas
+    // I retrieve the number of pages
     const $pages =
       Number(document.querySelector('#characters_pages')?.innerHTML) || 0
     if ($pages > 1) {
@@ -25,11 +22,14 @@ export default function Paginate ({ to, query }:props) {
       for (let i = 0; i < $pages && i < 10; i++) {
         total.push(i + 1)
       }
+
       setPages(total)
+    } else {
+      setPages(PAGS)
     }
   }, [query])
 
-  const queryset = filters ? `?${filters}` : ''
+  const queryset = query ? `?${query}` : ''
   return (
     <>
     <div className="flex flex-row gap-2">
