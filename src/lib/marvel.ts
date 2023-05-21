@@ -1,4 +1,3 @@
-import { MarvelCharacterDataWrapper } from '@/types/marveTypes'
 
 import crypto from 'crypto'
 const { MARVEL_PUBLIC_KEY, MARVEL_PRIVATE_KEY } = process.env
@@ -20,6 +19,6 @@ export const getDataMarvelAPI = async (path: string, query?: string) => {
       query ? `&${query}` : ''
     }`
   )
-  const data: MarvelCharacterDataWrapper = await response.json()
+  const data = await response.json()
   return data.data
 }

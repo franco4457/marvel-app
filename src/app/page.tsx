@@ -1,5 +1,6 @@
 import Characters from '@/app/components/Characters'
 import Link from 'next/link'
+import Comics from './components/comics'
 
 export default function Home () {
   return (
@@ -11,6 +12,11 @@ export default function Home () {
         </Link>
         {/* @ts-expect-error Async Server Component */}
         <Characters />
+        <Link href="/comics">
+          <button className="bg-marvelRed px-2 ">Go to Comics</button>
+        </Link>
+        {/* @ts-expect-error Async Server Component */}
+        <Comics />
       </div>
     </main>
   )
