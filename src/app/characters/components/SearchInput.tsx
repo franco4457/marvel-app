@@ -27,7 +27,7 @@ export default function SearchInput () {
         className="text-slate-900"
         onChange={handlerInputChange}
       />
-      <Link href={`/characters?name=${searchByName}`}>
+      <Link href={`/characters?name=${searchByName}`} >
         <button onClick={handleSearchSumbit}>Search</button>
       </Link>
     </div>

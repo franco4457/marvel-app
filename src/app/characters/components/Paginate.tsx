@@ -4,31 +4,38 @@ import { useCharactersSelector } from '@/hooks/store'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
+interface props {
+  to: string
+  query: string
+}
 const PAGS: Array<number> = []
 
-export default function Paginate ({ to }: { to: string }) {
+export default function Paginate ({ to, query }:props) {
   const { filters } = useCharactersSelector()
-  const [pages, setPages] = useState<number>()
+
+  const [pages, setPages] = useState(PAGS)
+
+  const $pages =
+    Number(document.querySelector('#characters_pages')?.innerHTML) || 0
 
   useEffect(() => {
-    if (pages == null) {
-      const $pages = document.querySelector('#characters_pages')?.innerHTML
-      const pgs = Number($pages) || 0
-      setPages(pgs)
-    } else {
-      for (let i = 1; i < pages && i < 11; i++) {
-        PAGS.push(i)
-      }
-    }
-  }, [pages])
+    if ($pages > 1) {
+      const total: Array<number> = []
 
-  const query = filters ? `?${filters}` : ''
+      for (let i = 0; i < $pages && i < 10; i++) {
+        total.push(i + 1)
+      }
+      setPages(total)
+    }
+  }, [$pages, query])
+
+  const queryset = filters ? `?${filters}` : ''
   return (
     <>
     <div className="flex flex-row gap-2">
-      {PAGS.map((page, i) => (
+      {pages.map((page, i) => (
         <>
-          <Link key={i} href={`${to}/${page}${query}`} >
+          <Link key={i} href={`${to}/${page}${queryset}`} >
             <button className='bg-slate-800 rounded-sm px-2'>
             {page}
             </button>

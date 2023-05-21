@@ -16,7 +16,7 @@ export default function Page ({ searchParams }:props) {
       <div className="z-10 w-full max-w-5xl flex-col items-center justify-between font-mono text-sm flex text-center gap-6">
         <h1 className="text-xl">Marvel APP</h1>
         <SearchInput />
-        <Paginate to="/characters" />
+        <Paginate to="/characters" query={query} />
         {/* @ts-expect-error Async Server Component */}
         <Characters query={query} />
       </div>
