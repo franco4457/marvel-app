@@ -16,7 +16,7 @@ export default function Home () {
           <button className="bg-marvelRed px-2 ">Go to Comics</button>
         </Link>
         {/* @ts-expect-error Async Server Component */}
-        <Comics />
+        {/* <Comics /> */}
       </div>
     </main>
   )

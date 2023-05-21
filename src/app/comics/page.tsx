@@ -14,7 +14,7 @@ export default function Page ({ searchParams }:props) {
     <>
         <Paginate query={query} to='/comics' pageSelector='comics_pages'/>
         {/* @ts-expect-error Async Server Component */}
-        <Comics query={query} />
+        {/* <Comics query={query} /> */}
     </>
   )
 }

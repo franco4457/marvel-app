@@ -16,7 +16,7 @@ export const getCharacters = async ({
   // Set filter parameters and pagination parameters for search
   const querySeted = query ? `?${query}` : ''
 
-  const res = await fetch(`/api/characters${setPage}${querySeted}`)
+  const res = await fetch(`${BASE_URL}/api/characters${setPage}${querySeted}`)
 
   const data = await res.json()
   const responseCharacter: MarvelCharacterDataContainer = data.data
@@ -24,7 +24,7 @@ export const getCharacters = async ({
 }
 
 export const getCharacter = async (id:string) => {
-  const res = await fetch(`/api/characters/detail/${id}`)
+  const res = await fetch(`${BASE_URL}/api/characters/detail/${id}`)
   const data = await res.json()
   const response: MarvelCharacter = data.data
   return response
@@ -39,14 +39,14 @@ export const getComics = async ({
   // Set filter parameters and pagination parameters for search
   const querySeted = query ? `?${query}` : ''
 
-  const res = await fetch(`/api/comics${setPage}${querySeted}`)
+  const res = await fetch(`${BASE_URL}/api/comics${setPage}${querySeted}`)
 
   const data = await res.json()
   const responseCharacter: ComicsData = data.data
   return responseCharacter
 }
 export const getComic = async (id:string) => {
-  const res = await fetch(`/api/comics/detail/${id}`)
+  const res = await fetch(`${BASE_URL}/api/comics/detail/${id}`)
   const data = await res.json()
   const response: MarvelComic = data.data
   return response
