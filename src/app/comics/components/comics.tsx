@@ -1,8 +1,13 @@
 import { getComics } from '@/utils/utils'
 import Comic from '@/app/comics/components/comic'
 
-export default async function Comics () {
-  const { results } = await getComics()
+interface props{
+  query?: string
+  page?: string
+}
+
+export default async function Comics ({ query, page }:props) {
+  const { results } = await getComics({ page, query })
 
   return (
     <>
