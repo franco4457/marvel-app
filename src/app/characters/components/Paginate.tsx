@@ -15,10 +15,10 @@ export default function Paginate ({ to, query }:props) {
 
   const [pages, setPages] = useState(PAGS)
 
-  const $pages =
-    Number(document.querySelector('#characters_pages')?.innerHTML) || 0
-
   useEffect(() => {
+    // recupero la cantidad de paginas
+    const $pages =
+      Number(document.querySelector('#characters_pages')?.innerHTML) || 0
     if ($pages > 1) {
       const total: Array<number> = []
 
@@ -27,7 +27,7 @@ export default function Paginate ({ to, query }:props) {
       }
       setPages(total)
     }
-  }, [$pages, query])
+  }, [query])
 
   const queryset = filters ? `?${filters}` : ''
   return (
