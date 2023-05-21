@@ -1,5 +1,5 @@
 import { getCharParameters } from '@/types/generalTypes'
-import { MarvelCharacterDataContainer } from '@/types/marveTypes'
+import { MarvelCharacter, MarvelCharacterDataContainer } from '@/types/marveTypes'
 
 export const BASE_URL =
   process.env.NODE_ENV === 'development'
@@ -20,4 +20,11 @@ export const getCharacters = async ({
   const data = await res.json()
   const responseCharacter: MarvelCharacterDataContainer = data.data
   return responseCharacter
+}
+
+export const getCharacter = async (id:string) => {
+  const res = await fetch(`${BASE_URL}/api/characters/detail/${id}`)
+  const data = await res.json()
+  const response: MarvelCharacter = data.data
+  return response
 }

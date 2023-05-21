@@ -3,11 +3,13 @@ import { getCharParameters } from '@/types/generalTypes'
 import Character from '@/app/components/Character'
 
 export default async function Characters ({ page, query }: getCharParameters = {}) {
-  const { results, total, limit } = await getCharacters({ page, query })
+  const data = await getCharacters({ page, query })
 
-  const pgs = Math.ceil(((total || 0) / (limit || 0)) || 1)
-  const characters = results || []
+  const total = data?.total || 0
+  const limit = data?.limit || 20
+  const characters = data?.results
 
+  const pgs = Math.ceil((total / limit) || 1)
   return (
     <>
       <section className="w-screen overflow-hidden">

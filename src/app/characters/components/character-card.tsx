@@ -1,7 +1,4 @@
-import React from 'react'
 
-export default function CharacterCard () {
-  return (
-    <div>CharacterCard</div>
-  )
+export default async function CharacterCard () {
+  return null
 }

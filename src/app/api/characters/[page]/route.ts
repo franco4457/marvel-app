@@ -9,7 +9,6 @@ export async function GET (req: Request, context: { params: { page: string } }) 
 
   // set page
   const { page } = context.params
-
   const query = setPage(Number(page), querySeted)
 
   const res = await getDataMarvelAPI('/characters', query)

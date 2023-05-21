@@ -60,7 +60,7 @@ export interface MarvelCharacter {
       id?: number;
       name?: string;
       description?: string;
-      modified?: Date;
+      modified?: string;
       resourceURI?: string;
       urls?: MarvelUrl[];
       thumbnail?: MarvelImage;
