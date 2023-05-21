@@ -1,6 +1,6 @@
 import { getCharParameters } from '@/types/generalTypes'
 import { MarvelCharacter, MarvelCharacterDataContainer } from '@/types/marveTypes'
-import { ComicsData } from '@/types/marvel-comics'
+import { ComicsData, MarvelComic } from '@/types/marvel-comics'
 
 export const BASE_URL =
   process.env.NODE_ENV === 'development'
@@ -44,4 +44,10 @@ export const getComics = async ({
   const data = await res.json()
   const responseCharacter: ComicsData = data.data
   return responseCharacter
+}
+export const getComic = async (id:string) => {
+  const res = await fetch(`${BASE_URL}/api/comics/detail/${id}`)
+  const data = await res.json()
+  const response: MarvelComic = data.data
+  return response
 }

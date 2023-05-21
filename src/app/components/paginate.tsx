@@ -5,17 +5,18 @@ import { useEffect, useState } from 'react'
 
 interface props {
   to: string
-  query: string
+  query: string,
+  pageSelector: string
 }
 const PAGS: Array<number> = []
 
-export default function Paginate ({ to, query }:props) {
+export default function Paginate ({ to, query, pageSelector }:props) {
   const [pages, setPages] = useState(PAGS)
 
   useEffect(() => {
     // I retrieve the number of pages
     const $pages =
-      Number(document.querySelector('#characters_pages')?.innerHTML) || 0
+      Number(document.querySelector(`#${pageSelector}`)?.innerHTML) || 0
     if ($pages > 1) {
       const total: Array<number> = []
 
@@ -27,7 +28,7 @@ export default function Paginate ({ to, query }:props) {
     } else {
       setPages(PAGS)
     }
-  }, [query])
+  }, [query, pageSelector])
 
   const queryset = query ? `?${query}` : ''
   return (
